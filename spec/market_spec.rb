@@ -72,4 +72,37 @@ RSpec.describe Market do
       expect(@market1.vendors_that_sell(@item4)).to eq([@vendor2])
     end
   end
+
+  describe '#sorted_item_list' do
+    it 'Gets list of all avilable items, no duplicates, alphabetical' do
+      expect(@market1.sorted_item_list).to eq([])
+
+      @market1.add_vendor(@vendor1)
+      expect(@market1.sorted_item_list).to eq([@item1, @item2])
+
+      @market1.add_vendor(@vendor2)
+      @market1.add_vendor(@vendor3)
+      expect(@market1.sorted_item_list).to eq([@item4, @item1, @item3, @item2])
+    end
+  end
+
+  describe '#total_inventory' do
+    it 'gets hash of item => total count' do
+      @market1.add_vendor(@vendor1)
+      @market1.add_vendor(@vendor2)
+      @market1.add_vendor(@vendor3)
+      expect(@market1.item_counts).to eq({@item1 => 100, @item2 => 7, @item3 => 25, @item4 => 50})
+    end
+
+    it 'gets an inventory hash' do
+      expect(@market1.total_inventory).to eq({})
+
+      @market1.add_vendor(@vendor1)
+      expect(@market1.total_inventory).to eq({@item1 => {quantity: 35,vendors: [@vendor1]}, @item2 => {quantity: 7,vendors: [@vendor1]}})
+
+      # @market1.add_vendor(@vendor2)
+      # @market1.add_vendor(@vendor3)
+      # expect(@market1.total_inventory).to eq([@item4, @item1, @item3, @item2])
+    end
+  end
 end
