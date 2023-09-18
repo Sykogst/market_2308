@@ -71,5 +71,14 @@ RSpec.describe Market do
       expect(@market1.vendors_that_sell(@item1)).to eq([@vendor1, @vendor3])
       expect(@market1.vendors_that_sell(@item4)).to eq([@vendor2])
     end
+    
+    it "Gets total amount if all sold" do
+      @market1.add_vendor(@vendor1)
+      @market1.add_vendor(@vendor2)
+      @market1.add_vendor(@vendor3)
+      expect(@vendor1.potential_revenue).to eq(29.75)
+      expect(@vendor2.potential_revenue).to eq(345.00)
+      expect(@vendor3.potential_revenue).to eq(48.75)
+    end
   end
 end
