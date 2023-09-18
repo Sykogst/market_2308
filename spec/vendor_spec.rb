@@ -18,4 +18,11 @@ RSpec.describe Vendor do
       expect(@vendor1.inventory).to eq({})
     end
   end
+
+  describe '#check_stock, #stock' do
+    it 'has no inventory of any items' do
+      expect(@vendor1.inventory).to eq({})
+      expect(@vendor1.check_stock(@item1)).to eq(0)
+    end
+  end
 end
