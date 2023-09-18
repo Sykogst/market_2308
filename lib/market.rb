@@ -19,6 +19,4 @@ class Market
       vendor.inventory.keys.include?(item)
     end
   end
-
-  def potential_revenue(vendor)
 end

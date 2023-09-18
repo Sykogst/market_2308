@@ -14,4 +14,10 @@ class Vendor
   def stock(item, amount)
     @inventory[item] == nil ? @inventory[item] = amount : @inventory[item] += amount
   end
+
+  def potential_revenue
+    @inventory.reduce(0) do |sum, (item, stock)|
+      sum + stock * item.price
+    end
+  end
 end
