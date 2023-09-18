@@ -14,8 +14,8 @@ RSpec.describe Vendor do
     end
 
     it 'has attributes upon initialize' do
-      expect (@vendor1.name).to eq('Rocky Mountain Fresh')
-      expect (@vendor1.inventory).to eq({})
+      expect(@vendor1.name).to eq('Rocky Mountain Fresh')
+      expect(@vendor1.inventory).to eq({})
     end
   end
 end
