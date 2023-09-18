@@ -74,11 +74,15 @@ RSpec.describe Market do
   end
 
   describe '#sorted_item_list' do
-    it 'Gets list of all avilable items, no duplicates' do
-      expect(@market.sorted_item_list).to eq([])
+    it 'Gets list of all avilable items, no duplicates, alphabetical' do
+      expect(@market1.sorted_item_list).to eq([])
 
       @market1.add_vendor(@vendor1)
-      expect(@market.sorted_item_list).to eq([@item1, @item2])
+      expect(@market1.sorted_item_list).to eq([@item1, @item2])
+
+      @market1.add_vendor(@vendor2)
+      @market1.add_vendor(@vendor3)
+      expect(@market1.sorted_item_list).to eq([@item4, @item1, @item3, @item2])
     end
   end
 end
