@@ -24,5 +24,14 @@ RSpec.describe Vendor do
       expect(@vendor1.inventory).to eq({})
       expect(@vendor1.check_stock(@item1)).to eq(0)
     end
+
+    it 'can add items and inventory' do
+      expect(@vendor1.inventory).to eq({})
+      expect(@vendor1.check_stock(@item1)).to eq(0)
+
+      @vendor1.stock(@item1, 30)
+      expect(@vendor1.inventory).to eq({@item1 => 30})
+      expect(@vendor1.check_stock(@item1)).to eq(30)
+    end
   end
 end

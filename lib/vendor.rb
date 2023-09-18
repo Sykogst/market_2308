@@ -8,5 +8,10 @@ class Vendor
 
   def check_stock(item)
     return 0 if @inventory[item] == nil
+    @inventory[item]
+  end
+
+  def stock(item, amount)
+    @inventory[item] == nil ? @inventory[item] = amount : @inventory[item] += amount
   end
 end
