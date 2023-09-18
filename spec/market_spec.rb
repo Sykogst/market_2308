@@ -35,14 +35,14 @@ RSpec.describe Market do
   end
 
   describe '#add_vendor, #vendor_names' do
-    it 'Adds vendor name to market vendors' do
+    it 'Adds vendor to market vendors' do
       expect(@market1.vendors).to eq([])
       
-      @market.add_vendor(@vendor1)
+      @market1.add_vendor(@vendor1)
       expect(@market1.vendors).to eq([@vendor1])
 
-      @market.add_vendor(@vendor2)
-      @market.add_vendor(@vendor3)
+      @market1.add_vendor(@vendor2)
+      @market1.add_vendor(@vendor3)
       expect(@market1.vendors).to eq([@vendor1, @vendor2, @vendor3])
     end
   end
