@@ -87,6 +87,13 @@ RSpec.describe Market do
   end
 
   describe '#total_inventory' do
+    it 'gets hash of item => total count' do
+      @market1.add_vendor(@vendor1)
+      @market1.add_vendor(@vendor2)
+      @market1.add_vendor(@vendor3)
+      expect(@market1.item_counts).to eq({@item1 => 100, @item2 => 7, @item3 => 25, @item4 => 50})
+    end
+
     it 'gets an inventory hash' do
       expect(@market1.total_inventory).to eq({})
 
